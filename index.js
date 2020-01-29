@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        result: 0,
         message: 'Hello Kitty!',
         dices: [
             { name: 'd4', value : 4, selected: false },
@@ -11,5 +12,21 @@ var app = new Vue({
             { name: 'd20', value : 20, selected: false },
             { name: 'd100', value : 100, selected: false },
         ],
+    },
+    methods: {
+            roll: function () {
+                let res = 0;
+                for (const dice of this.dices) {
+                    if (dice.selected === true) {
+                        res += this.rollDice(dice.value)
+                    }
+                }
+                this.result = res;
+            },
+            rollDice: function (sides) {
+              var randomNumber = Math.floor(Math.random() * sides) + 1;
+              return randomNumber;
+            }
     }
 });
+
