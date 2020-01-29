@@ -6,6 +6,7 @@ var app = new Vue({
     el: '#app',
     data: {
         result: 0,
+        history: [],
         dices: [
             { name: 'd4', value : 4, selected: false },
             { name: 'd6', value : 6, selected: false },
@@ -18,6 +19,9 @@ var app = new Vue({
     },
     methods: {
             roll: function () {
+                if (this.result != 0) {
+                    this.history.unshift(this.result);
+                }
                 let res = 0;
                 for (const dice of this.dices) {
                     if (dice.selected === true) {

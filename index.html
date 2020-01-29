@@ -6,10 +6,16 @@
 <body>
 
 <div id="app">
+    <h3>{{result}}</h3>
     <dice v-for="dice in dices"
           v-bind:dice="dice"
           v-bind:key="dice.value"></dice>
     <button v-on:click="roll">Roll Me!</button>
+    <div id="history">
+        <div v-for="item in history">
+            {{item}}
+        </div>
+    </div>
 </div>
 
 <script src="index.js"></script>
