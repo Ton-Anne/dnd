@@ -1,4 +1,4 @@
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -6,7 +6,10 @@
 <body>
 
 <div id="app">
-    {{ message }}
+    <dice v-for="dice in dices"
+          v-bind:dice="dice"
+          v-bind:key="dice.value"></dice>
+    <button v-on:click="roll">Roll Me!</button>
 </div>
 
 <script src="index.js"></script>

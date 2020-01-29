@@ -1,7 +1,10 @@
+Vue.component('dice', {
+    props: ['dice'],
+    template: '<div><input type="checkbox" v-model="dice.selected" checked="{{dice.selected}}">{{dice.name}}</div>'
+})
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello Kitty!',
         dices: [
             { name: 'd4', value : 4, selected: false },
             { name: 'd6', value : 6, selected: false },
