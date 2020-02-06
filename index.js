@@ -4,7 +4,6 @@ Vue.component('dice', {
 })
 var app = new Vue({
     el: '#app',
-    vuetify: new Vuetify(),
     data: {
         result: 0,
         history: [],
