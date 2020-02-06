@@ -29,40 +29,27 @@ var app = new Vue({
                     }
                 }
                 this.result = res;
+                this.saveState();
             },
             rollDice: function (sides) {
-              var randomNumber = Math.floor(Math.random() * sides) + 1;
-              return randomNumber;
+                var randomNumber = Math.floor(Math.random() * sides) + 1;
+                return randomNumber;
+            },
+            saveState: function () {
+                localStorage.history = JSON.stringify(this.history);
+            },
+            restoreState: function () {
+                if (localStorage.history != null) {
+                    this.history = JSON.parse(localStorage.history);
+                }
+            },
+            clearState: function () {
+                localStorage.clear();
             },
             reset: function () {
                 this.history = [];
+                this.clearState();
             },
-            roll: function () {
-            if (this.result != 0) {
-                this.history.unshift(this.result);
-            }
-            let res = 0;
-            for (const dice of this.dices) {
-                if (dice.selected === true) {
-                    res += this.rollDice(dice.value)
-                }
-            }
-            this.result = res;
-            this.saveState();
-        },
-        rollDice: function (sides) {
-            var randomNumber = Math.floor(Math.random() * sides) + 1;
-            return randomNumber;
-        },
-        saveState: function () {
-            localStorage.history = JSON.stringify(this.history);
-        },
-        restoreState: function () {
-            if (localStorage.history != null) {
-                this.history = JSON.parse(localStorage.history);
-            }
-        }
     }
 });
-
 app.restoreState();
