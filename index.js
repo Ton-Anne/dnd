@@ -33,6 +33,9 @@ var app = new Vue({
             rollDice: function (sides) {
               var randomNumber = Math.floor(Math.random() * sides) + 1;
               return randomNumber;
+            },
+            reset: function () {
+                this.history = [];
             }
     }
 });
